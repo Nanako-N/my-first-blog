@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>
@@ -23,4 +23,32 @@
         </div>
     </div>
 </body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>web地図サンプル</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script>
+      function init() {
+      //地図を表示するdiv要素のidを設定
+      var map = L.map('mapcontainer');
+      //地図の中心とズームレベルを指定
+      map.setView([35.689761, 139.700523], 15);
+      var marker = L.marker([35.689761, 139.700523]).addTo(map);
+      marker.bindPopup("新宿駅").openPopup();
+      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+      attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+      }).addTo(map);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="mapcontainer" style="width:600px;height:600px"></div>
+  </body>
 </html>
